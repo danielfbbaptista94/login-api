@@ -1,24 +1,11 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql');
-const dotenv = require('dotenv');
-
-const routers = require('./routers/routes');
-
-dotenv.config({
-    path: './.env'
-});
 
 const app = express();
-const conn = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    port: process.env.DATABASE_PORT,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE
-});
+const connection = require('./db/connection');
+// const routers = require('./routers/routes');
 
-conn.connect( (error) => {
+connection.connect( (error) => {
     if (error) {
         console.log(error);
     } else {
@@ -28,7 +15,7 @@ conn.connect( (error) => {
 
 app.use(cors());
 app.use(express.json());
-app.use(routers);
+// app.use(routers);
 app.listen(5001, () => {
     console.log("Server start at port 5001");
 });
