@@ -3,6 +3,8 @@ const cors = require('cors');
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 
+const routers = require('./routers/routes');
+
 dotenv.config({
     path: './.env'
 });
@@ -26,6 +28,7 @@ conn.connect( (error) => {
 
 app.use(cors());
 app.use(express.json());
+app.use(routers);
 app.listen(5001, () => {
     console.log("Server start at port 5001");
 });
