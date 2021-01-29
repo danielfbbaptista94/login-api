@@ -1,0 +1,1 @@
+A NodeJs, Angular and MySQL project, User Authentication with JWT Web Token Cookies
