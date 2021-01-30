@@ -1,10 +1,11 @@
 const express = require('express');
 
+
+const AuthController = require('../controllers/AuthController');
+
 const routes = express.Router();
 
-router.get('/', (req, res) => {
-    
-})
+routes.post('/auth/register', AuthController.create);
 
 
 module.exports = routes;

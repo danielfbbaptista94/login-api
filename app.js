@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 const connection = require('./db/connection');
-// const routers = require('./routers/routes');
+const routers = require('./routers/routes');
 
 connection.connect( (error) => {
     if (error) {
@@ -15,7 +15,7 @@ connection.connect( (error) => {
 
 app.use(cors());
 app.use(express.json());
-// app.use(routers);
+app.use(routers);
 app.listen(5001, () => {
     console.log("Server start at port 5001");
 });
